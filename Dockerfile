@@ -3,7 +3,8 @@ COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app  
 RUN mvn -f /usr/src/app/pom.xml clean install -DskipTests
 
-FROM openjdk:21-jdk
+
+FROM openjdk:17
 RUN mkdir api
 COPY --from=build /usr/src/app/target/*.jar api/eureka.jar
 EXPOSE 7100
